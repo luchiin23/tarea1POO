@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 public class ElevatorLab {
    public static void main(String[] args) {
         // Creacion botoneras
-      int numPisos = 4;//
+      int numPisos = 4;//////////////////
       Botonera[] botoneras = new Botonera[numPisos+1]; // index goes from 0 to numPisos.
       botoneras[0] = new BotoneraCabina(4);
       botoneras[1] = new BotoneraPrimerPiso();
