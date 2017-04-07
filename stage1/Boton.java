@@ -1,7 +1,7 @@
 public class Boton {
 
    private boolean state;
-   
+   public boolean nada;
    public Boton () {
       state = false;   // OFF
    }   
