@@ -15,8 +15,7 @@ public class stage2Test {
       for (int i=0; i < numPisos; i++) {
          sensores.add(new Sensor(i*floorHight,i+1, controlUnit));
       }
-      //caja.findSensor(5);
-      //return;
+      
       // commands needed to lift and descend the evelator between
       // the first and last floor.
       
