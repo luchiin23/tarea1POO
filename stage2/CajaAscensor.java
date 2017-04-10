@@ -20,6 +20,14 @@ public class CajaAscensor {
       sensores = ss;
    }
    public Sensor findSensor(float position) {
-    /// to be implemented
+	   	Sensor encontrado = null; 
+	    for(int i=0;i<sensores.size();i++){
+	    	if (sensores.get(i).isInRange(position)){
+	    		encontrado = sensores.get(i);
+	    		break;
+	    	}
+	    		
+	    }
+	    return encontrado;
    }
 }

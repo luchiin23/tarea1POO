@@ -15,16 +15,20 @@ public class stage2Test {
       for (int i=0; i < numPisos; i++) {
          sensores.add(new Sensor(i*floorHight,i+1, controlUnit));
       }
+      //caja.findSensor(5);
+      //return;
       // commands needed to lift and descend the evelator between
       // the first and last floor.
+      
       float deltaHight = 0.02f;  // 2 [cm] each time
       while(cabina.readFloorIndicator()< numPisos)
-         cabina.move(deltaHight);
+          cabina.move(deltaHight);
       while(cabina.readFloorIndicator()> 1)
          cabina.move(-deltaHight);
       while(cabina.readFloorIndicator()< numPisos)
          cabina.move(deltaHight);
       while(cabina.readFloorIndicator()> 1)
          cabina.move(-deltaHight);
+      
    }
 }

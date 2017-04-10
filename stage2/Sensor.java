@@ -23,6 +23,14 @@ public class Sensor {
    /** return true if h is within position +- PRECISION 
    */
       // to be completed
+	   if((position-PRECISION)<h & h<(position+PRECISION)){
+		   activateAction();
+		   return true;
+	   }
+	   else{
+		   deactivateAction();
+	   }
+	   return false;
    }
    public void activateAction() {
       active = true;
@@ -30,8 +38,10 @@ public class Sensor {
    }
    public void deactivateAction() {
       // to be completed
+	   active = false;
    }
    public boolean isActivated(){
        // to be completed
+	   return active;
    }
 }

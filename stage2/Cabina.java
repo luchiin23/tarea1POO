@@ -24,7 +24,7 @@ public class Cabina {
       Random generator = new Random();
       botonera = bc;
       shaft = cajaAscensor;
-      position = generator.nextFloat();   //it starts between 0 an 1 [m]
+      position = generator.nextFloat()/100;   //it starts between 0 an 1 [m]
       floorIndicator=1;  // to make it consistent with its position
    }
    public void move(float delta) {
@@ -32,6 +32,15 @@ public class Cabina {
       position+=delta;
       sensor=shaft.findSensor(position);
       // to be completed by you.
+      lastSensor=sensor;
    }
    // other methods are missing.
+	public int readFloorIndicator() {
+		return floorIndicator;
+	}
+	public void setFloorIndicator(int currentFloor) {
+		
+		floorIndicator = currentFloor;
+		
+	}
  }
