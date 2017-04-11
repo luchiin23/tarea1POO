@@ -27,17 +27,36 @@ public class ControlUnit {
       botoneras = b;
    }
    public void elevatorRequested(int locationRequest){ ////////////////YO
-      if (motor.getState() == Motor.STOPPED) { // start de motor
-            // to go to the requested floor
+      if (motor.getState() == Motor.STOPPED) 
+      {		// start de motor
+    	  	// to go to the requested floor
          int cabinaLocation = cabina.readFloorIndicator();
          // to be completed
+         if (locationRequest > cabinaLocation)
+         {
+        	 motor.lift();
+        	 if (areThereHigherRequests(cabinaLocation))
+			 {
+        		 //Do Something ._.
+        		 activateSensorAction(cabina.readFloorIndicator());
+			 }
+         }	
+         else if (locationRequest < cabinaLocation)
+         {
+        	 motor.lower();
+        	 if (areThereLowerRequests(cabinaLocation))
+        	 {
+        		 //Do Something ._.
+        		 activateSensorAction(cabina.readFloorIndicator());
+        	 }
+         }
+      }
          
          //Hacer uso del motor para llegar al piso deseado
          //Creo que acá se debe usar areThereHigherRequests y su par
          //para mientras se va bajando o subiendo verificar si debe seguir ese camino (dado que aún faltan peticiones por atender)
          //Esto ocurre porq el timer del motor le permite ejecutarse de forma paralela a las peticiones
          
-      }
    }
    private void printElevatorState(){
       System.out.print(cabina.readFloorIndicator()+"\t"+motor.getState()+"\t");
