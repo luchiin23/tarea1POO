@@ -95,6 +95,12 @@ public class ControlUnit {
 	    		  if (boton.isDownRequested())
 	    			  return true;
 	    	  }
+	    	  if(botoneras[i] instanceof UpRequest)
+	    	  {
+	              UpRequest boton = (UpRequest) botoneras[i];
+	              if (boton.isUpRequested()) 
+	                 return true;
+	          }
 	      }
 		return false;
 	   }
