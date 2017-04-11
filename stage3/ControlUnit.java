@@ -64,7 +64,15 @@ public class ControlUnit {
    }
    
    private void checkAndAttendDownRequest(int floor) {
-      // to be completed
+	   if (botoneras[floor] instanceof DownRequest)
+	   {
+		   DownRequest boton = (DownRequest) botoneras[floor];
+	         if (boton.isDownRequested()) {
+	            boton.resetDownRequest();
+	            printElevatorState();
+	            motor.pause();
+	         }
+	   }
    }
    public void activateSensorAction(int currentFloor){
       cabina.setFloorIndicator(currentFloor);
