@@ -16,6 +16,7 @@ public boolean setRequest(String s_up) {
       boolean result = s_up.equals("U");
       if (result)
          up.turnON();
+      this.elevatorRequested();
       return result;         
    }
 

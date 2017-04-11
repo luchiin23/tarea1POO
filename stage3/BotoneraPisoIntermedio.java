@@ -20,8 +20,12 @@ public boolean setRequest(String up_down){
          up.turnON();
       else if (up_down.equals("D"))
          down.turnON();
-      else
-         return false;
+      else{
+    	  this.elevatorRequested();
+    	  return false;
+      }
+         
+      this.elevatorRequested();
       return true;
    }
    // UpRequest interface implementation

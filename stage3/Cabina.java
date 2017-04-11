@@ -29,6 +29,11 @@ public class Cabina {
    }
    public void move(float delta) {
       // to be completed
+	  Sensor sensor;
+	  position+=delta;
+	  sensor=shaft.findSensor(position);
+	  // to be completed by you.
+	  lastSensor=sensor;
    }
    public float getPosition(){
       return position;
