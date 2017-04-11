@@ -31,6 +31,12 @@ public class ControlUnit {
             // to go to the requested floor
          int cabinaLocation = cabina.readFloorIndicator();
          // to be completed
+         
+         //Hacer uso del motor para llegar al piso deseado
+         //Creo que acá se debe usar areThereHigherRequests y su par
+         //para mientras se va bajando o subiendo verificar si debe seguir ese camino (dado que aún faltan peticiones por atender)
+         //Esto ocurre porq el timer del motor le permite ejecutarse de forma paralela a las peticiones
+         
       }
    }
    private void printElevatorState(){
@@ -76,7 +82,15 @@ public class ControlUnit {
    }
    public void activateSensorAction(int currentFloor){
       cabina.setFloorIndicator(currentFloor);
-      // to be completed     
+      // to be completed  
+      
+      //Actualiza el estado del botón asociado al piso (dado que el ascensor llegó al piso)
+      //Desde abajo
+      checkAndAttendUpRequest(currentFloor);
+      //Desde arriba
+      checkAndAttendDownRequest(currentFloor);
+      
+      
    }
    private boolean areThereHigherRequests(int currentFloor) {
       for (int i=currentFloor+1; i < botoneras.length; i++) {
