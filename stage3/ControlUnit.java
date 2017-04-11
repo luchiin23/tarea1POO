@@ -26,7 +26,7 @@ public class ControlUnit {
       sensores = s;
       botoneras = b;
    }
-   public void elevatorRequested(int locationRequest){
+   public void elevatorRequested(int locationRequest){ ////////////////YO
       if (motor.getState() == Motor.STOPPED) { // start de motor
             // to go to the requested floor
          int cabinaLocation = cabina.readFloorIndicator();
