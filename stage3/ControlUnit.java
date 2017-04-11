@@ -103,7 +103,7 @@ public class ControlUnit {
       cabina.setFloorIndicator(currentFloor);
       // to be completed  
       
-      //Actualiza el estado del botón asociado al piso (dado que el ascensor llegó al piso)
+      //Actualiza el estado del botón asociado al piso (dado que el ascensor llegó al piso) y a su vez pausa al ascensor
       //Desde abajo
       checkAndAttendUpRequest(currentFloor);
       //Desde arriba
