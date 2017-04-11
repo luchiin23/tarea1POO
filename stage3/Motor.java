@@ -1,23 +1,23 @@
 /**
 Motor: En este diseño la unidad de control maneja el motor para mover la cabina.
-Se optó por este camino para reducir métodos en la cabina que sólo eran de paso 
+Se optó por este camino para reducir métodos en la cabina que solo eran de paso 
 para llegar al motor.
-El atributo fundamental del motor es timer. Éste hace que el motor trabaje
+El atributo fundamental del motor es timer. este hace que el motor trabaje
 en paralelo que los llamados de pisos provenientes del main.
 El estado del motor se usa para distinguir en su Unidad de Control
-cuando llega un nuevo envento, dado que si el motor está detenido, debe iniciar
+cuando llega un nuevo envento, dado que si el motor esta detenido, debe iniciar
 su movimiento. 
-esta clase no es pública pues se usa sólo en este archivo
-El atributo más immportan del motor en el objeto timer de la clase Timer. 
+esta clase no es publica pues se usa solo en este archivo
+El atributo mas important del motor en el objeto timer de la clase Timer. 
 Esta clase permite generar invociones regulares y en "paralelo" con el 
-resto de la ejecución (el programa main en este caso).
-Cuando el timer parte, éste genera invocaciones regulares al método 
-actionPerformed. El timer puede ser detenido invocando su método stop,
-así se terminan las invocaciones paraletas de actionPerformed.
-Cabe destacar que mientras el timer esté corriento, el programa no termina
-aún cuando el main haya conclluido. Esto es así porque esta actividad paralela
-(otro hilo de ejecución) es parte del programa y éste termina sólo cuando
-no hay algún flujo o hhilo de ejecución corriendo.
+resto de la ejecucion (el programa main en este caso).
+Cuando el timer parte, este genera invocaciones regulares al metodo 
+actionPerformed. El timer puede ser detenido invocando su metodo stop,
+asi se terminan las invocaciones paraletas de actionPerformed.
+Cabe destacar que mientras el timer este corriendo, el programa no termina
+aun cuando el main haya concluido. Esto es asi porque esta actividad paralela
+(otro hilo de ejecucion) es parte del programa y este termina solo cuando
+no hay algun flujo o hilo de ejecucion corriendo.
 */
 import java.awt.event.*;  // ActionListener, ActionEvent
 import javax.swing.Timer;

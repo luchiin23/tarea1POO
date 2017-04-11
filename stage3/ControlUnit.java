@@ -87,6 +87,15 @@ public class ControlUnit {
    }
    
    private boolean areThereLowerRequests(int currentFloor) {
-      // to be completed
-   }
+	      for (int i=1; i < currentFloor; i++)
+	      {
+	    	  if(botoneras[i] instanceof DownRequest)
+	    	  {
+	    		  DownRequest boton = (DownRequest) botoneras [i];
+	    		  if (boton.isDownRequested())
+	    			  return true;
+	    	  }
+	      }
+		return false;
+	   }
 }
