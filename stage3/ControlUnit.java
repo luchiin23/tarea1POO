@@ -27,29 +27,42 @@ public class ControlUnit {
       botoneras = b;
    }
    public void elevatorRequested(int locationRequest){ ////////////////YO
-      if (motor.getState() == Motor.STOPPED) 
-      {		// start de motor
-    	  	// to go to the requested floor
-         int cabinaLocation = cabina.readFloorIndicator();
-         // to be completed
-         if (locationRequest > cabinaLocation)
-         {
-        	 motor.lift();
-        	 if (areThereHigherRequests(cabinaLocation))
-			 {
-        		 //Do Something ._.
-        		 activateSensorAction(cabina.readFloorIndicator());
-			 }
-         }	
-         else if (locationRequest < cabinaLocation)
-         {
-        	 motor.lower();
-        	 if (areThereLowerRequests(cabinaLocation))
-        	 {
-        		 //Do Something ._.
-        		 activateSensorAction(cabina.readFloorIndicator());
-        	 }
-         }
+      if (motor.getState() == Motor.STOPPED)
+      {
+    	  // start de motor
+    	  // to go to the requested floor
+    	  int cabinaLocation = cabina.readFloorIndicator();
+          // to be completed
+    	  if (locationRequest > cabinaLocation)
+    		  motor.lift();
+          else if (locationRequest < cabinaLocation)
+        	  motor.lower();
+      }
+      else if (motor.getState() == Motor.UP)
+      {
+    	  if  (areThereHigherRequests(locationRequest))
+    	  {
+     		 //Do Something ._.
+     		 int top = highestDown(locationRequest);
+     		 if (top != locationRequest)
+     		 {
+     			 //significa que hay peticion para bajar en piso más arriba de locReq
+     		 }
+     		 
+    	  }
+      }
+      else if (motor.getState() == Motor.DOWN)
+      {
+    	  if (areThereLowerRequests(locationRequest))
+    	  {
+    		//Do Something ._.
+      		 int bottom = lowestUp(locationRequest);
+      		 if (bottom != locationRequest)
+      		 {
+      			 //significa que hay peticion para subir en piso más abajo de locReq
+      		 }
+      		 
+    	  }
       }
          
          //Hacer uso del motor para llegar al piso deseado
@@ -127,22 +140,52 @@ public class ControlUnit {
       return false;
    }
    
-   private boolean areThereLowerRequests(int currentFloor) {
-	      for (int i=1; i < currentFloor; i++)
-	      {
-	    	  if(botoneras[i] instanceof DownRequest)
-	    	  {
-	    		  DownRequest boton = (DownRequest) botoneras [i];
-	    		  if (boton.isDownRequested())
-	    			  return true;
-	    	  }
-	    	  if(botoneras[i] instanceof UpRequest)
-	    	  {
-	              UpRequest boton = (UpRequest) botoneras[i];
-	              if (boton.isUpRequested()) 
-	                 return true;
-	          }
-	      }
-		return false;
+	private boolean areThereLowerRequests(int currentFloor) {
+	   for (int i=1; i < currentFloor; i++)
+	   {
+		   if(botoneras[i] instanceof DownRequest)
+		   {
+			   DownRequest boton = (DownRequest) botoneras [i];
+			   if (boton.isDownRequested())
+				   return true;
+		   }
+		   if(botoneras[i] instanceof UpRequest)
+		   {
+			   UpRequest boton = (UpRequest) botoneras[i];
+			   if (boton.isUpRequested()) 
+				   return true;
+		   }
 	   }
+	   return false;
+	}
+   
+   private int highestDown(int currentFloor)
+   {
+	   int high = currentFloor;
+	   for (int i=currentFloor+1; i < botoneras.length; i++)
+	   {
+		   if(botoneras[i] instanceof DownRequest)
+		   {
+			   DownRequest boton = (DownRequest) botoneras[i];
+			   if (boton.isDownRequested())
+				   high = i;
+		   }
+	   }
+	   return high;
+   }
+   
+   private int lowestUp(int currentFloor)
+   {
+	   int low = currentFloor;
+	   for (int i=1; i < currentFloor;i++)
+	   {
+		   if (botoneras[i] instanceof UpRequest)
+		   {
+			   UpRequest boton = (UpRequest) botoneras[i];
+			   if (boton.isUpRequested())
+				   low = i;
+		   }
+	   }
+	   return low;
+   }
 }
