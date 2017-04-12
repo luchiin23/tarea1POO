@@ -10,7 +10,7 @@ public abstract class Botonera {
    }
    protected void elevatorRequested(){
       // to be completed
-	   controlUnit.elevatorRequested(location);
+	   //controlUnit.elevatorRequested(location);
    }
    public abstract boolean setRequest(String s);  // users can only set buttons 
 }

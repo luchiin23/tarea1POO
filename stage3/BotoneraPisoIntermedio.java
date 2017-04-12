@@ -25,9 +25,14 @@ public boolean setRequest(String up_down){
     	  return false;
       }
          
+      //super.elevatorRequested();
       this.elevatorRequested();
       return true;
    }
+	public void elevatorRequested(){
+    // to be completed
+	   cu.elevatorRequested(floor);
+	}
    // UpRequest interface implementation
     public void resetUpRequest()
     {

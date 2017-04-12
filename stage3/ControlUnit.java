@@ -126,10 +126,18 @@ public class ControlUnit {
     	  checkAndAttendUpRequest(currentFloor);
     	  if (!areThereHigherRequests(currentFloor))
     	  {
-    		  if (areThereLowerRequests(currentFloor))
+    		  checkAndAttendDownRequest(currentFloor);
+    		  if (areThereLowerRequests(currentFloor)){
+    			  System.out.println("Bajando!");
+    			  //checkAndAttendDownRequest(currentFloor);
     			  motor.lower();
-    		  else
+    		  }
+    			  
+    		  else{
+    			  System.out.println("Deteniendo, iba subiendo.");
     			  motor.stop();
+    		  }
+    			  
     	  }
       }
       else if (motor.getState() == Motor.DOWN)
@@ -137,10 +145,18 @@ public class ControlUnit {
     	  checkAndAttendDownRequest(currentFloor);
     	  if (!areThereLowerRequests(currentFloor))
     	  {
-    		  if (areThereHigherRequests(currentFloor))
+    		  checkAndAttendUpRequest(currentFloor);
+    		  if (areThereHigherRequests(currentFloor)){
+    			  System.out.println("Subiendo!");
+    			  //checkAndAttendUpRequest(currentFloor);
     			  motor.lift();
-    		  else
+    		  }
+    			  
+    		  else{
+    			  System.out.println("Deteniendo, iba bajando.");
     			  motor.stop();
+    		  }
+    			  
     	  }
       }
    }
