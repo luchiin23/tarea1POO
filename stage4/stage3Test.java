@@ -21,7 +21,7 @@ public class stage3Test {
       BotoneraCabina bc = new BotoneraCabina(numPisos);  // we do not use it in this stage
       Cabina cabina = new Cabina(bc, shaft);
       Motor motor = new Motor(cabina, cabinaSpeed);
-      ControlUnit controlUnit = new ControlUnit(motor, cabina, sensores, botoneras);
+      ControlUnit controlUnit = new ControlUnit(motor, cabina, sensores, botoneras, bc);
 
       botoneras[1] = new BotoneraPrimerPiso(controlUnit,1);
       for (int i=2; i< numPisos; i++)
