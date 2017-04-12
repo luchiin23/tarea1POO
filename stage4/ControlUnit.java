@@ -19,12 +19,14 @@ public class ControlUnit {
    private Cabina cabina;
    private Sensor[] sensores;
    private Botonera[] botoneras;
+   private BotoneraCabina bc;
       
-   public ControlUnit(Motor m,Cabina ca, Sensor[] s, Botonera[] b){
+   public ControlUnit(Motor m,Cabina ca, Sensor[] s, Botonera[] b, BotoneraCabina bcc){
       motor = m;
       cabina = ca;
       sensores = s;
       botoneras = b;
+      bc = bcc;
    }
    public void elevatorRequested(int locationRequest){ ////////////////YO
       if (motor.getState() == Motor.STOPPED)
