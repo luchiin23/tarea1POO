@@ -38,7 +38,7 @@ public class ControlUnit {
           else if (locationRequest < cabinaLocation)
         	  motor.lower();
       }
-      else if (motor.getState() == Motor.UP)
+      /*else if (motor.getState() == Motor.UP)
       {
     	  if  (areThereHigherRequests(locationRequest))
     	  {
@@ -63,7 +63,7 @@ public class ControlUnit {
       		 }
       		 
     	  }
-      }
+      }*/
          
          //Hacer uso del motor para llegar al piso deseado
          //Creo que acá se debe usar areThereHigherRequests y su par
@@ -118,11 +118,31 @@ public class ControlUnit {
       
       //Actualiza el estado del botón asociado al piso (dado que el ascensor llegó al piso) y a su vez pausa al ascensor
       //Desde abajo
-      checkAndAttendUpRequest(currentFloor);
+      
       //Desde arriba
-      checkAndAttendDownRequest(currentFloor);
       
-      
+      if (motor.getState() == Motor.UP)
+      {
+    	  checkAndAttendUpRequest(currentFloor);
+    	  if (!areThereHigherRequests(currentFloor))
+    	  {
+    		  if (areThereLowerRequests(currentFloor))
+    			  motor.lower();
+    		  else
+    			  motor.stop();
+    	  }
+      }
+      else if (motor.getState() == Motor.DOWN)
+      {
+    	  checkAndAttendDownRequest(currentFloor);
+    	  if (!areThereLowerRequests(currentFloor))
+    	  {
+    		  if (areThereHigherRequests(currentFloor))
+    			  motor.lift();
+    		  else
+    			  motor.stop();
+    	  }
+      }
    }
    private boolean areThereHigherRequests(int currentFloor) {
       for (int i=currentFloor+1; i < botoneras.length; i++) {
