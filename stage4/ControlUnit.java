@@ -19,14 +19,12 @@ public class ControlUnit {
    private Cabina cabina;
    private Sensor[] sensores;
    private Botonera[] botoneras;
-   private BotoneraCabina bc;
       
-   public ControlUnit(Motor m,Cabina ca, Sensor[] s, Botonera[] b, BotoneraCabina bcc){
+   public ControlUnit(Motor m,Cabina ca, Sensor[] s, Botonera[] b){
       motor = m;
       cabina = ca;
       sensores = s;
       botoneras = b;
-      bc = bcc;
    }
    public void elevatorRequested(int locationRequest){ ////////////////YO
       if (motor.getState() == Motor.STOPPED)
@@ -116,12 +114,6 @@ public class ControlUnit {
    }
    public void activateSensorAction(int currentFloor){
       cabina.setFloorIndicator(currentFloor);
-      // to be completed  
-      
-      //Actualiza el estado del botón asociado al piso (dado que el ascensor llegó al piso) y a su vez pausa al ascensor
-      //Desde abajo
-      
-      //Desde arriba
       
       if (motor.getState() == Motor.UP)
       {

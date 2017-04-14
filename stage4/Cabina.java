@@ -27,6 +27,11 @@ public class Cabina {
       position = generator.nextFloat();   //it starts between 0 an 1 [m]
       floorIndicator=1;
    }
+   public void viaje(int floor)
+   {
+	   
+   }
+   
    public void move(float delta) {
       // to be completed
 	  Sensor sensor;
