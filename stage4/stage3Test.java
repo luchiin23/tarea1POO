@@ -52,8 +52,13 @@ public class stage3Test {
             Thread.currentThread().sleep((eventTime-currentTime)*1000);
             currentTime = eventTime;
             // execute event
-            if (!botoneras[nbotonera].setRequest(accion))
-               break;
+            if (nbotonera != 0)
+            {
+            	if (!botoneras[nbotonera].setRequest(accion))
+            		break;
+            }
+            else
+            	controlUnit.elevatorRequested(Integer.valueOf(accion));
          }
       } catch(FileNotFoundException exception){
          System.out.println("The file " + file.getPath() + " was not found.");
