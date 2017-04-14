@@ -49,4 +49,7 @@ public class Cabina {
    public int readFloorIndicator() {
       return floorIndicator;
    }
+   public void turnOnBc(int floor){
+	   this.botonera.setRequest(String.valueOf(floor));
+   }
 }

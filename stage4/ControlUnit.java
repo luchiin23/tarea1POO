@@ -32,6 +32,7 @@ public class ControlUnit {
     	  // start de motor
     	  // to go to the requested floor
     	  int cabinaLocation = cabina.readFloorIndicator();
+    	  cabina.turnOnBc(locationRequest);
           // to be completed
     	  if (locationRequest > cabinaLocation)
     		  motor.lift();

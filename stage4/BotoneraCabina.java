@@ -1,6 +1,5 @@
 import java.lang.Integer;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BotoneraCabina extends Botonera{
    private ArrayList <Boton> botones;
