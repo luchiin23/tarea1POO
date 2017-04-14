@@ -31,4 +31,7 @@ public class BotoneraCabina extends Botonera{
        }
      return false;
    }
+   public boolean isRequested(int floor){
+	   return botones.get(floor-1).getState();
+   }
 }

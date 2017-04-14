@@ -55,6 +55,11 @@ public class Cabina {
    //true: sí estaba apretado
    //false sino
    public boolean checkFloor(int currentFloor){
-	   return true;
+	   if (this.botonera.isRequested(currentFloor)){
+		   this.botonera.resetFloorRequest(currentFloor);
+		   return true;
+	   }
+	   else
+	   return false;
    }
 }
