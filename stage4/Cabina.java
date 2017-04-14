@@ -52,4 +52,9 @@ public class Cabina {
    public void turnOnBc(int floor){
 	   this.botonera.setRequest(String.valueOf(floor));
    }
+   //true: sí estaba apretado
+   //false sino
+   public boolean checkFloor(int currentFloor){
+	   return true;
+   }
 }
