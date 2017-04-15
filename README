@@ -1,3 +1,4 @@
+Tarea 1: 
 Compilación
 	Para compilar todas las clases de una determinada etapa, basta con ejecutar el comando make (existe un makefile por cada etapa).
 
