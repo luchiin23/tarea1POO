@@ -1,7 +1,7 @@
 JFLAGS = -g
 JC = javac
 JVM= java
-.SUFFIXES: .java .class .txt
+.SUFFIXES: .java .class
 .java.class:
 	$(JC) $(JFLAGS) $*.java
 
