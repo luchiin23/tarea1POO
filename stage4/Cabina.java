@@ -63,6 +63,7 @@ public class Cabina {
    public boolean checkFloor(int currentFloor){
 	   if (this.botonera.isRequested(currentFloor)){
 		   this.botonera.resetFloorRequest(currentFloor);
+		   System.out.println("en piso  "+currentFloor);
 		   return true;
 	   }
 	   else

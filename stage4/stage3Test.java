@@ -51,6 +51,7 @@ public class stage3Test {
             // wait for it to occur.
             Thread.currentThread().sleep((eventTime-currentTime)*1000);
             currentTime = eventTime;
+            //System.out.println(eventTime);//
             // execute event
             if (nbotonera != 0)
             {
