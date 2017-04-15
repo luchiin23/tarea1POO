@@ -37,39 +37,7 @@ public class ControlUnit {
     		  motor.lift();
           else if (locationRequest < cabinaLocation)
         	  motor.lower();
-      }
-      /*else if (motor.getState() == Motor.UP)
-      {
-    	  if  (areThereHigherRequests(locationRequest))
-    	  {
-     		 //Do Something ._.
-     		 int top = highestDown(locationRequest);
-     		 if (top != locationRequest)
-     		 {
-     			 //significa que hay peticion para bajar en piso más arriba de locReq
-     		 }
-     		 
-    	  }
-      }
-      else if (motor.getState() == Motor.DOWN)
-      {
-    	  if (areThereLowerRequests(locationRequest))
-    	  {
-    		//Do Something ._.
-      		 int bottom = lowestUp(locationRequest);
-      		 if (bottom != locationRequest)
-      		 {
-      			 //significa que hay peticion para subir en piso más abajo de locReq
-      		 }
-      		 
-    	  }
-      }*/
-         
-         //Hacer uso del motor para llegar al piso deseado
-         //Creo que acá se debe usar areThereHigherRequests y su par
-         //para mientras se va bajando o subiendo verificar si debe seguir ese camino (dado que aún faltan peticiones por atender)
-         //Esto ocurre porq el timer del motor le permite ejecutarse de forma paralela a las peticiones
-         
+      }  
    }
    private void printElevatorState(){
       System.out.print(cabina.readFloorIndicator()+"\t"+motor.getState()+"\t");
@@ -116,7 +84,7 @@ public class ControlUnit {
       cabina.setFloorIndicator(currentFloor);
       // to be completed  
       
-      //Actualiza el estado del botón asociado al piso (dado que el ascensor llegó al piso) y a su vez pausa al ascensor
+      //Actualiza el estado del boton asociado al piso (dado que el ascensor llego al piso) y a su vez pausa al ascensor
       //Desde abajo
       
       //Desde arriba

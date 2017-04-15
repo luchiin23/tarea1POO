@@ -58,7 +58,7 @@ public class Cabina {
    {
 	   return botonera.isRequested(floor);
    }
-   //true: sí estaba apretado
+   //true: si estaba apretado
    //false sino
    public boolean checkFloor(int currentFloor){
 	   if (this.botonera.isRequested(currentFloor)){

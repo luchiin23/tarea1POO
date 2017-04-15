@@ -1,0 +1,5 @@
+Compilación
+	Para compilar todas las clases de una determinada etapa, basta con ejecutar el comando make (existe un makefile por cada etapa).
+
+Ejecución
+	Debe ejecutarse el comando *make run*, quien incorpora el archivo de texto a utilizar.
