@@ -14,6 +14,11 @@ public class BotoneraCabina extends Botonera{
    public void resetFloorRequest(int i) {
       botones.get(i-1).turnOFF();
    }
+   
+   public int ssize()
+   {
+	   return botones.size();
+   }
    public String toString() {
       String s="";
       for(Boton b: botones)

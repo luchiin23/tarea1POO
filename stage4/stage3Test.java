@@ -7,7 +7,7 @@ public class stage3Test {
    public static int currentTime=0;
    public static void main(String[] args) {
         // Elevator's parameters
-	   System.out.println("piso\tEstadoM\tsensor\tUpReq\tDownReq");
+	   System.out.println("piso\tEstadoM\tsensor\tCabina\tUpReq\tDownReq");
       int numPisos = 6;
       float floorHight = 3.0f;
       float cabinaSpeed = 1f;   // [m/s]

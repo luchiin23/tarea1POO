@@ -40,10 +40,15 @@ public class ControlUnit {
         	  motor.lower();
       }
    }
+   // <piso de la cabina> <estado sensores de piso> <TAB>  <estado luces de botonera de cabina> <TAB> <estado de luces de botones de subida de piso> <TAB> <estado de luces de botones de bajada de piso>  <RET>
    private void printElevatorState(){
       System.out.print(cabina.readFloorIndicator()+"\t"+motor.getState()+"\t");
       for (Sensor s: sensores)
          System.out.print(s.isActivated()?"1":"0");
+      System.out.print("\t");
+      
+      for (int i =1; i <= cabina.size();i++)
+    	  System.out.print(cabina.isReq(i)?"1":"0");
       System.out.print("\t");
       for (int i=1; i < botoneras.length; i++) 
          if (botoneras[i] instanceof UpRequest) {

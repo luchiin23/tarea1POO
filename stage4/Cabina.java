@@ -27,9 +27,10 @@ public class Cabina {
       position = generator.nextFloat();   //it starts between 0 an 1 [m]
       floorIndicator=1;
    }
-   public void viaje(int floor)
+   
+   public int size()
    {
-	   
+	   return botonera.ssize();
    }
    
    public void move(float delta) {
@@ -51,6 +52,11 @@ public class Cabina {
    }
    public void turnOnBc(int floor){
 	   this.botonera.setRequest(String.valueOf(floor));
+   }
+   
+   public boolean isReq(int floor)
+   {
+	   return botonera.isRequested(floor);
    }
    //true: sí estaba apretado
    //false sino
