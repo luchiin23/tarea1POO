@@ -96,13 +96,11 @@ public class ControlUnit {
     	  {
     		  checkAndAttendDownRequest(currentFloor);
     		  if (areThereLowerRequests(currentFloor)){
-    			  System.out.println("Bajando!");
     			  //checkAndAttendDownRequest(currentFloor);
     			  motor.lower();
     		  }
     			  
     		  else{
-    			  System.out.println("Deteniendo, iba subiendo.");
     			  motor.stop();
     		  }
     			  
@@ -115,13 +113,11 @@ public class ControlUnit {
     	  {
     		  checkAndAttendUpRequest(currentFloor);
     		  if (areThereHigherRequests(currentFloor)){
-    			  System.out.println("Subiendo!");
     			  //checkAndAttendUpRequest(currentFloor);
     			  motor.lift();
     		  }
     			  
     		  else{
-    			  System.out.println("Deteniendo, iba bajando.");
     			  motor.stop();
     		  }
     			  
