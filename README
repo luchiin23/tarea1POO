@@ -1,6 +1,155 @@
-Tarea 1: 
-Compilación
-	Para compilar todas las clases de una determinada etapa, basta con ejecutar el comando make (existe un makefile por cada etapa).
+===========================================================
+***********************************************************
+*Tarea 1: 	Implementación de un ascensor con orientación	*
+*					a objetos en Java.															*
+***********************************************************
 
-Ejecución
-	Debe ejecutarse el comando *make run*, quien incorpora el archivo de texto a utilizar.
+-En esta tarea se buca replicar el comportamiento normal de
+un ascensor, incorporando distintos niveles de control.
+-Permitiendo la interacción de las distintas entidades de
+un ascensor.
+
+***********************************************************
+*											Compilación:												*
+***********************************************************
+
+	-Para compilar todas las clases de una determinada etapa,
+	basta con ejecutar el comando: make.
+	Existe un makefile por cada etapa.
+
+***********************************************************
+*												Ejecución:												*
+***********************************************************
+
+	-Debe ejecutarse el comando: make run.
+	Quien incorpora el archivo de texto a utilizar.
+
+***********************************************************
+*							Detalle de clases por etapa:								*
+***********************************************************
+
+-En las distintas etapas no siempre se mantuvieron algunas
+clases, dado que el trabajo incremental fue a la vez frag-
+mentado al desarrollar por "partes" el proyecto.
+Por esto se muestran todas las clases y se destaca la
+clase con el *-Main-* por etapa.
+
+	Etapa 1:
+		Boton
+		Botonera
+		BotoneraCabina
+		BotoneraPisoIntermedio
+		BotoneraPrimerPiso
+		BotoneraUltimoPiso
+		DownRequest
+		UpRequest
+		*-ElevatorLab-*
+
+	Etapa 2:
+		BotoneraCabina
+		Cabina
+		CajaAscensor
+		ControlUnit
+		Sensor
+		*-stage2Test-*
+
+	Etapa 3:
+		Boton
+		Botonera
+		BotoneraCabina
+		BotoneraPisoIntermedio
+		BotoneraPrimerPiso
+		BotoneraUltimoPiso
+		Cabina
+		CajaAscensor
+		ControlUnit
+		DownRequest
+		Motor
+		Sensor
+		UpRequest
+		*-stage3Test-*
+
+	Etapa 4:
+		Boton
+		Botonera
+		BotoneraCabina
+		BotoneraPisoIntermedio
+		BotoneraPrimerPiso
+		BotoneraUltimoPiso
+		Cabina
+		CajaAscensor
+		ControlUnit
+		DownRequest
+		Motor
+		Sensor
+		UpRequest
+		*-stage3Test-*
+
+***********************************************************
+*									Resumen de las clases:									*
+***********************************************************
+
+	Boton									: Clase que permite los estados
+													de encendido y apagado para los
+													elementos en las botoneras.
+
+	Botonera							: Clase abstracta de las que here-
+													dan las distintas botoneras.
+
+	BotoneraCabina				: Clase que implementa la botonera
+													dentro de la cabina.
+
+	BotoneraPisoIntermedio: Clase utilizada para instanciar
+													las botoneras de los pisos inter-
+													medios.
+
+	BotoneraPrimerPiso		: Clase utilizada para instanciar
+													la botonera del primer piso.
+
+	BotoneraUltimoPiso		: Clase utilizada para instanciar
+													la botonera del último piso
+
+	Cabina								: Clase usada para representar la
+													cabina con su botonera y compor-
+													tamiento característico.
+
+	CajaAscensor					: Clase que representa el comparti-
+													miento en donde la cabina se mue-
+													ve, usada para contener a los
+													sensores de cada piso.
+
+	ControlUnit						: Clase utilizada para controlar
+													el comportamiento del ascensor,
+													gatillando acciones y haciendo de
+													intermediario en el flujo de in-
+													formación.
+
+	DownRequest						: Interfaz usada para identificar
+													la capacidad de las botoneras que
+													la implementan de atender peti-
+													ciones de ir a un piso inferior.
+
+	UpRequest							: Interfaz usada para identificar
+													la capacidad de las botoneras que
+													la implementan de atender peti-
+													ciones de ir a un piso superior.
+
+	Motor									: Clase que permite el control del
+													moviento de la cabina, esto en
+													un hilo de ejecución distinto al
+													principal, permitiendo el movi-
+													miento de forma independiente a
+													la lectura de eventos de entrada.
+
+	Sensor								: Clase que representa los distin-
+													tos sensores de piso que detectan
+													y avisan a la unidad de control
+													la ubicación de la cabina.
+
+	*-Main-*							: Clase principal encargada de leer
+													los distintos eventos de entrada
+													y realizar las peticiones respec-
+													tivas.
+
+***********************************************************
+===========================================================
