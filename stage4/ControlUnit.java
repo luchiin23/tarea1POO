@@ -26,18 +26,29 @@ public class ControlUnit {
       sensores = s;
       botoneras = b;
    }
-   public void elevatorRequested(int locationRequest){ ////////////////YO
+   public void elevatorRequested(int locationRequest, int action){ ////////////////YO
+	   if(action == 0){
+		   cabina.turnOnBc(locationRequest);
+	   }
+	   
       if (motor.getState() == Motor.STOPPED)
       {
     	  // start de motor
     	  // to go to the requested floor
     	  int cabinaLocation = cabina.readFloorIndicator();
-    	  cabina.turnOnBc(locationRequest);
+    	  //cabina.turnOnBc(locationRequest);
           // to be completed
-    	  if (locationRequest > cabinaLocation)
+    	  if (locationRequest > cabinaLocation){
     		  motor.lift();
-          else if (locationRequest < cabinaLocation)
+    	  }
+    		  
+          else if (locationRequest < cabinaLocation){
         	  motor.lower();
+          }
+        	  
+          else{
+        	  activateSensorAction(cabinaLocation);
+          }
       }
    }
    // <piso de la cabina> <estado sensores de piso> <TAB>  <estado luces de botonera de cabina> <TAB> <estado de luces de botones de subida de piso> <TAB> <estado de luces de botones de bajada de piso>  <RET>
@@ -86,47 +97,146 @@ public class ControlUnit {
 	         }
 	   }
    }
+   /*
+   private void checkAndAttendCabinaRequest(int floor) {
+	   DownRequest boton = (DownRequest) botoneras[floor];
+         if (boton.isDownRequested()) {
+            boton.resetDownRequest();
+            printElevatorState();
+            motor.pause();
+         }
+	   
+   }
+   */
    public void activateSensorAction(int currentFloor){
       cabina.setFloorIndicator(currentFloor);
-      if (cabina.checkFloor(currentFloor))
-      {
-    	  motor.pause();
-      }
+      //if (cabina.checkFloor(currentFloor))
+      //{
+    //	  printElevatorState();
+    	  //motor.pause();
+    //  }
       if (motor.getState() == Motor.UP)
       {
+    	  if (cabina.checkFloor(currentFloor))
+	      {
+	    	  printElevatorState();
+	    	  motor.pause();
+	      }
     	  checkAndAttendUpRequest(currentFloor);
     	  if (!areThereHigherRequests(currentFloor))
     	  {
     		  checkAndAttendDownRequest(currentFloor);
     		  if (areThereLowerRequests(currentFloor)){
-    			  System.out.println("Bajando!");
     			  //checkAndAttendDownRequest(currentFloor);
     			  motor.lower();
     		  }
     			  
     		  else{
-    			  System.out.println("Deteniendo, iba subiendo.");
     			  motor.stop();
     		  }
     	  }
       }
       else if (motor.getState() == Motor.DOWN)
       {
+    	  if (cabina.checkFloor(currentFloor))
+	      {
+	    	  printElevatorState();
+	    	  motor.pause();
+	      }
     	  checkAndAttendDownRequest(currentFloor);
     	  if (!areThereLowerRequests(currentFloor))
     	  {
     		  checkAndAttendUpRequest(currentFloor);
     		  if (areThereHigherRequests(currentFloor)){
-    			  System.out.println("Subiendo!");
     			  //checkAndAttendUpRequest(currentFloor);
     			  motor.lift();
     		  }
     			  
     		  else{
-    			  System.out.println("Deteniendo, iba bajando.");
     			  motor.stop();
     		  }
     			  
+    	  }
+      }
+      
+      //No iba moviendose.
+      else{
+    	  //de la mitad hacia abajo
+    	  if (cabina.checkFloor(currentFloor))
+	      {
+	    	  printElevatorState();
+	    	  motor.pause();
+	      }
+    	  if (currentFloor< sensores.length/2){
+    		  int atendido = 0;
+    		  checkAndAttendUpRequest(currentFloor);
+        	  if (!areThereHigherRequests(currentFloor))
+        	  {
+        		  checkAndAttendDownRequest(currentFloor);
+        		  if (areThereLowerRequests(currentFloor)){
+        			  //checkAndAttendDownRequest(currentFloor);
+        			  atendido=1;
+        			  motor.lower();
+        		  }
+        			  
+        		  else{
+        			  motor.stop();
+        		  }
+        	  }
+        	  if (atendido==0){
+        		  checkAndAttendDownRequest(currentFloor);
+            	  if (!areThereLowerRequests(currentFloor))
+            	  {
+            		  checkAndAttendUpRequest(currentFloor);
+            		  if (areThereHigherRequests(currentFloor)){
+            			  //checkAndAttendUpRequest(currentFloor);
+            			  motor.lift();
+            		  }
+            			  
+            		  else{
+            			  motor.stop();
+            		  }
+            			  
+            	  }
+        	  }
+        	  
+    	  }
+    	  
+    	  //de la mitad para arriba
+    	  else{
+    		  int atendido=0;
+    		  checkAndAttendDownRequest(currentFloor);
+        	  if (!areThereLowerRequests(currentFloor))
+        	  {
+        		  checkAndAttendUpRequest(currentFloor);
+        		  if (areThereHigherRequests(currentFloor)){
+        			  atendido=1;
+        			  //checkAndAttendUpRequest(currentFloor);
+        			  motor.lift();
+        		  }
+        			  
+        		  else{
+        			  motor.stop();
+        		  }
+        			  
+        	  }
+        	  if(atendido==0){
+        		  checkAndAttendUpRequest(currentFloor);
+            	  if (!areThereHigherRequests(currentFloor))
+            	  {
+            		  checkAndAttendDownRequest(currentFloor);
+            		  if (areThereLowerRequests(currentFloor)){
+            			  //checkAndAttendDownRequest(currentFloor);
+            			  motor.lower();
+            		  }
+            			  
+            		  else{
+            			  motor.stop();
+            		  }
+            	  }
+        		  
+        	  }
+        	  
     	  }
       }
    }
@@ -141,6 +251,9 @@ public class ControlUnit {
             DownRequest boton = (DownRequest) botoneras[i];
             if (boton.isDownRequested()) 
                return true;
+         }
+         if (cabina.isReq(i)){
+        	 return true;
          }
       }
       return false;
@@ -161,6 +274,9 @@ public class ControlUnit {
 			   if (boton.isUpRequested()) 
 				   return true;
 		   }
+		   if (cabina.isReq(i)){
+	        	 return true;
+	        }
 	   }
 	   return false;
 	}

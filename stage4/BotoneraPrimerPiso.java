@@ -12,16 +12,16 @@ public class BotoneraPrimerPiso extends Botonera implements UpRequest {
 	   floor = i;
 	   up = new Boton();
    }
-   public boolean setRequest(String s_up) {
+   public boolean setRequest(String s_up, int action) {
       boolean result = s_up.equals("U");
       if (result)
          up.turnON();
-      this.elevatorRequested();
+      this.elevatorRequested(action);
       return result;         
    }
-   public void elevatorRequested(){
+   public void elevatorRequested(int action){
     // to be completed
-	   cu.elevatorRequested(floor);
+	   cu.elevatorRequested(floor, action);
 	   }
 
    public boolean isUpRequested() {

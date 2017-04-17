@@ -15,23 +15,23 @@ public class BotoneraPisoIntermedio extends Botonera implements DownRequest, UpR
 	   down = new Boton();
 }
 
-public boolean setRequest(String up_down){
+public boolean setRequest(String up_down, int action){
       if (up_down.equals("U"))
          up.turnON();
       else if (up_down.equals("D"))
          down.turnON();
       else{
-    	  this.elevatorRequested();
+    	  this.elevatorRequested(action);
     	  return false;
       }
          
       //super.elevatorRequested();
-      this.elevatorRequested();
+      this.elevatorRequested(action);
       return true;
    }
-	public void elevatorRequested(){
+	public void elevatorRequested(int action){
     // to be completed
-	   cu.elevatorRequested(floor);
+	   cu.elevatorRequested(floor, action);
 	}
    // UpRequest interface implementation
     public void resetUpRequest()

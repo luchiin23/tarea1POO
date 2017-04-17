@@ -12,5 +12,5 @@ public abstract class Botonera {
       // to be completed
 	   //controlUnit.elevatorRequested(location);
    }
-   public abstract boolean setRequest(String s);  // users can only set buttons 
+   public abstract boolean setRequest(String s, int action);  // users can only set buttons 
 }

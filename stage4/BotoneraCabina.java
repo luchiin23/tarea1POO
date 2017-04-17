@@ -2,6 +2,7 @@ import java.lang.Integer;
 import java.util.ArrayList;
 
 public class BotoneraCabina extends Botonera{
+	//cambiar
    private ArrayList <Boton> botones;
    private int pisos;
    public BotoneraCabina(int n_pisos) {
@@ -25,9 +26,9 @@ public class BotoneraCabina extends Botonera{
          s+=b.toString();
       return s;
    }
-   public boolean setRequest(String s)
+   public boolean setRequest(String s, int action)
    {
-     for(int i=0;i<=pisos;i++)
+     for(int i=1;i<=pisos;i++)
        {
          if (Integer.parseInt(s)==i){
            botones.get(i-1).turnON();

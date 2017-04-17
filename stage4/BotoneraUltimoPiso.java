@@ -12,16 +12,16 @@ public class BotoneraUltimoPiso extends Botonera implements DownRequest {
 	   down = new Boton();
 	   floor = numPisos;
 }
-   public boolean setRequest(String s_down) {
+   public boolean setRequest(String s_down, int action) {
       boolean result = s_down.equals("D");
       if (result)
          down.turnON();
-      this.elevatorRequested();
+      this.elevatorRequested(action);
       return result;         
    }
-   public void elevatorRequested(){
+   public void elevatorRequested(int action){
     // to be completed
-	   cu.elevatorRequested(floor);
+	   cu.elevatorRequested(floor,action);
 	   }
 
    public boolean isDownRequested() {

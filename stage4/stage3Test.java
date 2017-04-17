@@ -55,11 +55,11 @@ public class stage3Test {
             // execute event
             if (nbotonera != 0)
             {
-            	if (!botoneras[nbotonera].setRequest(accion))
+            	if (!botoneras[nbotonera].setRequest(accion,1))
             		break;
             }
             else
-            	controlUnit.elevatorRequested(Integer.valueOf(accion));
+            	controlUnit.elevatorRequested(Integer.valueOf(accion),0);
          }
       } catch(FileNotFoundException exception){
          System.out.println("The file " + file.getPath() + " was not found.");

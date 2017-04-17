@@ -51,7 +51,7 @@ public class Cabina {
       return floorIndicator;
    }
    public void turnOnBc(int floor){
-	   this.botonera.setRequest(String.valueOf(floor));
+	   this.botonera.setRequest(String.valueOf(floor),0);
    }
    
    public boolean isReq(int floor)
@@ -63,7 +63,6 @@ public class Cabina {
    public boolean checkFloor(int currentFloor){
 	   if (this.botonera.isRequested(currentFloor)){
 		   this.botonera.resetFloorRequest(currentFloor);
-		   System.out.println("en piso  "+currentFloor);
 		   return true;
 	   }
 	   else
