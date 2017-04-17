@@ -1,5 +1,0 @@
-está listo el formato del print, falta lo del csv.
-para mostrar el estado de los botones de la cabina tuve que implementar métodos en la clase botoneracabina, y como es un atributo de cabina, un método en cabina que "redirecciona" al de botoneracabina.
-Los métodos son (respectivamente) ssize() y size().
-También en cabina implementé el método isReq(floor) que redirecciona al método isRequested(floor) de la clase botoneracabina.
-Esto lo hice porque la botonera de la cabina como atributo de la clase cabina es private (no se si hay otra forma de hacerlo, pero me pareció lógico que se hiciera así).
